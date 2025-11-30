@@ -6,13 +6,13 @@ A high-performance tool to deduplicate Relay-generated artifact files, reducing 
 
 ```bash
 # pnpm
-pnpm add github:fellowapp/relay-dedup
+pnpm add -D @fellow/relay-dedup
 
 # npm
-npm install github:fellowapp/relay-dedup
+npm install --save-dev @fellow/relay-dedup
 
 # yarn
-yarn add github:fellowapp/relay-dedup
+yarn add --dev @fellow/relay-dedup
 ```
 
 The postinstall script automatically downloads the correct pre-built binary for your platform (macOS/Linux, x64/ARM64).

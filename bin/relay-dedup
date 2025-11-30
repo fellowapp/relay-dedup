@@ -7,9 +7,7 @@ const fs = require("fs");
 const binaryPath = path.join(__dirname, "relay-dedup-binary");
 
 if (!fs.existsSync(binaryPath)) {
-  console.error(
-    "relay-dedup binary not found. Please run: npm run postinstall"
-  );
+  console.error("relay-dedup binary not found. Try running 'pnpm install' again.");
   process.exit(1);
 }
 
@@ -22,4 +20,3 @@ try {
   console.error(error.message);
   process.exit(1);
 }
-
