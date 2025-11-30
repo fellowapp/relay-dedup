@@ -1,5 +1,5 @@
 {
-  "name": "relay-dedup",
+  "name": "@fellow/relay-dedup",
   "version": "0.1.0",
   "description": "Deduplicate Relay-generated artifact files by extracting repeated structures into a shared module",
   "license": "MIT",

@@ -3,7 +3,6 @@
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
 const zlib = require("zlib");
 
 // GitHub repo info
@@ -76,8 +75,7 @@ async function downloadBinary() {
 		// Extract tar.gz
 		const tar = zlib.gunzipSync(tarGz);
 
-		// Simple tar extraction (binary is first file, starts at byte 512)
-		// TAR header is 512 bytes, then file content
+		// Simple tar extraction
 		const binaryContent = extractTarFile(tar, BINARY_NAME);
 
 		// Write binary
@@ -90,13 +88,12 @@ async function downloadBinary() {
 
 		console.log(`✓ Installed ${BINARY_NAME} to ${binaryPath}`);
 	} catch (error) {
+		console.error(`\nError: Failed to download binary for ${getPlatformKey()}`);
+		console.error(`  ${error.message}`);
 		if (error.message.includes("404")) {
-			console.error(`\nError: No prebuilt binary found for ${getPlatformKey()}`);
-			console.error(`Release v${version} may not exist or may not have binaries yet.`);
-			console.error(`\nYou can build from source with: cargo build --release`);
-		} else {
-			console.error(`\nError downloading binary: ${error.message}`);
+			console.error(`\nRelease v${version} may not exist yet.`);
 		}
+		console.error(`\nYou can build from source with: cargo build --release`);
 		process.exit(1);
 	}
 }
@@ -129,4 +126,3 @@ function extractTarFile(tarBuffer, filename) {
 }
 
 downloadBinary();
-
