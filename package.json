@@ -1,0 +1,23 @@
+{
+  "name": "relay-dedup",
+  "version": "0.1.0",
+  "description": "Deduplicate Relay-generated artifact files by extracting repeated structures into a shared module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fellowapp/relay-dedup"
+  },
+  "bin": {
+    "relay-dedup": "bin/relay-dedup"
+  },
+  "files": [
+    "bin",
+    "scripts"
+  ],
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

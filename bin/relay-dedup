@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+const { execFileSync } = require("child_process");
+const path = require("path");
+const fs = require("fs");
+
+const binaryPath = path.join(__dirname, "relay-dedup-binary");
+
+if (!fs.existsSync(binaryPath)) {
+  console.error(
+    "relay-dedup binary not found. Please run: npm run postinstall"
+  );
+  process.exit(1);
+}
+
+try {
+  execFileSync(binaryPath, process.argv.slice(2), { stdio: "inherit" });
+} catch (error) {
+  if (error.status !== undefined) {
+    process.exit(error.status);
+  }
+  console.error(error.message);
+  process.exit(1);
+}
+

@@ -1,0 +1,21 @@
+# Generated
+/target/
+/dist/
+
+# Downloaded binary (fetched during npm install)
+/bin/relay-dedup-binary
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Test artifacts
+/tests/output/
+/tests/output_*/
+
